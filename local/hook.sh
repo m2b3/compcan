@@ -28,7 +28,7 @@ export RI_ARGS="\"$CORES\" \"$MEMORY\" \"$MAX_TIME\" $GPUS"
 rm -f "$LOG" && touch "$LOG"
 
 # Run Jupyter on compute node.
-REMOTE_CMD="cd ~/compcan && ./run_interactive.sh $RI_ARGS"
+REMOTE_CMD="cd ~/compcan/remote && ./run_interactive.sh $RI_ARGS"
 echo "Connecting through $GATEWAY to run:"
 echo "  $REMOTE_CMD"
 ssh "$GATEWAY" "$REMOTE_CMD" > "$LOG" 2>&1 &
