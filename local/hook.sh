@@ -10,10 +10,31 @@ GPUS=$5
 
 GATEWAY=$CLUSTER.computecanada.ca
 
+find_free_port() {
+  # define a range of potentially free ports
+  lower_port=50000
+  upper_port=51000
+
+  # find a free port within the range
+  while :
+  do
+      check_port=$(shuf -i $lower_port-$upper_port -n 1)
+      timeout 1 bash -c "cat < /dev/null > /dev/tcp/127.0.0.1/${check_port}" 2>/dev/null
+      if [ $? -ne 0 ]; then
+          free_port=${check_port}
+          break
+      fi
+  done
+
+  echo "$free_port"
+}
+
 show_queue() {
   ssh "$GATEWAY" "squeue -u $USER"
 }
 
+echo "Log file: $LOG"
+echo
 echo "=== New job info ==="
 echo "Cluster: $CLUSTER"
 echo "Cores: ${CORES:-default}"
@@ -83,4 +104,4 @@ echo
 
 # Prevent sleep - that would kill the tunnel.
 systemd-inhibit \
-  ssh -t -L $PORT:$COMPUTE_HOST:$PORT $GATEWAY ssh $COMPUTE_HOST
+  ssh -t -L $(find_free_port):$COMPUTE_HOST:$PORT $GATEWAY ssh $COMPUTE_HOST
