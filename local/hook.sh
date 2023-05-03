@@ -87,7 +87,7 @@ COMPUTE_HOST=$(cut -f1 -d' ' <<< $pair)
 REMOTE_PORT=$(cut -f2 -d' ' <<< $pair)
 LOCAL_PORT=$(find_free_port)
 URL_PATH=$(sed -r s'/http:\/\/.*:[[:digit:]]+//g' <<< "$url")
-local_url="http://127.0.0.1:$LOCAL_REPORT/$URL_PATH"
+local_url="http://127.0.0.1:$LOCAL_PORT$URL_PATH"
 echo "COMPUTE_HOST: $COMPUTE_HOST"
 echo "REMOTE PORT: $REMOTE_PORT"
 echo "LOCAL PORT: $LOCAL_PORT"
