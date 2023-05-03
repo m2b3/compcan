@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 # Local log file to track hostname / port / ...
-LOG=remote.out
+LOG=$(mktemp -d)/remote.out
 CLUSTER=$1
 CORES=$2
 MEMORY=$3
@@ -29,9 +29,12 @@ find_free_port() {
   echo "$free_port"
 }
 
+
 show_queue() {
   ssh "$GATEWAY" "squeue -u $USER"
 }
+
+show_queue
 
 echo "Log file: $LOG"
 echo
@@ -49,7 +52,16 @@ export RI_ARGS="\"$CORES\" \"$MEMORY\" \"$MAX_TIME\" $GPUS"
 rm -f "$LOG" && touch "$LOG"
 
 # Run Jupyter on compute node.
-REMOTE_CMD="cd ~/compcan/remote && ./run_interactive.sh $RI_ARGS"
+REMOTE_CMD="
+cd ~
+if cd compcan; then
+  git fetch --all;
+  git reset --hard origin/main;
+else
+  git clone https://github.com/m2b3/compcan.git;
+fi
+
+cd ~/compcan/remote && ./run_interactive.sh $RI_ARGS"
 echo "Connecting through $GATEWAY to run:"
 echo "  $REMOTE_CMD"
 ssh "$GATEWAY" "$REMOTE_CMD" > "$LOG" 2>&1 &
@@ -67,13 +79,18 @@ url=$(tail -f "$LOG" \
   | tail -n 1 \
   | tr -d " ")
 
+notify-send "Job $JOB_ID's Jupyter is ready" || true
+
 echo
 pair=$(sed -rn 's/^.*http:\/\/(.*):([[:digit:]]+).*/\1 \2/p' <<< "$url")
 COMPUTE_HOST=$(cut -f1 -d' ' <<< $pair)
-PORT=$(cut -f2 -d' ' <<< $pair)
-local_url="http://127.0.0.1:$(sed -r s'/http:\/\/.*://g' <<< "$url")"
+REMOTE_PORT=$(cut -f2 -d' ' <<< $pair)
+LOCAL_PORT=$(find_free_port)
+URL_PATH=$(sed -r s'/http:\/\/.*:[[:digit:]]+//g' <<< "$url")
+local_url="http://127.0.0.1:$LOCAL_REPORT/$URL_PATH"
 echo "COMPUTE_HOST: $COMPUTE_HOST"
-echo "PORT: $PORT"
+echo "REMOTE PORT: $REMOTE_PORT"
+echo "LOCAL PORT: $LOCAL_PORT"
 echo
 
 
@@ -95,13 +112,14 @@ function cleanup {
   echo "Exiting tunneling, but don't forget job $JOB_ID might still be running!"
   echo
   echo "If you wish to reestablish the tunnel, run:"
-  echo "ssh -t -L $PORT:$COMPUTE_HOST:$PORT $GATEWAY ssh $COMPUTE_HOST"
+  echo "ssh -t -L $LOCAL_PORT:$COMPUTE_HOST:$REMOTE_PORT $GATEWAY ssh $COMPUTE_HOST"
 }
 trap cleanup EXIT
 
-echo "Tunneling port $PORT and opening interactive session on compute node $COMPUTE_HOST..."
+echo "Tunneling port $REMOTE_PORT through $LOCAL_PORT and opening interactive session on compute node $COMPUTE_HOST..."
 echo
 
 # Prevent sleep - that would kill the tunnel.
 systemd-inhibit \
-  ssh -t -L $(find_free_port):$COMPUTE_HOST:$PORT $GATEWAY ssh $COMPUTE_HOST
+  ssh -t -L $LOCAL_PORT:$COMPUTE_HOST:$REMOTE_PORT $GATEWAY ssh $COMPUTE_HOST
+
