@@ -12,4 +12,5 @@ export JUPYTER_DATA_DIR="$RUNTIME_ROOT"/jupyter-data
 export JUPYTER_CONFIG_PATH="$RUNTIME_ROOT"/jupyter-config
 mkdir -p "$JUPYTER_RUNTIME_DIR" "$JUPYTER_DATA_DIR" "$JUPYTER_CONFIG_PATH"
 
+cd
 jupyter-lab --ip $(hostname -f) --no-browser

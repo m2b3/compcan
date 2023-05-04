@@ -8,7 +8,6 @@ if [ -n "$4" ]; then
 fi
 
 salloc \
-	--chdir=$HOME \
 	--ntasks=1 \
 	--cpus-per-task=${1:-1} \
 	--mem=${2:-1024M}       \
