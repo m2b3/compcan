@@ -1,7 +1,7 @@
 # This file ought to be sourced.
 #
 # Depends on:
-REQS_FILE=~/reqs_frozen.txt
+REQS_FILE=~/compcan/requirements.txt
 
 # Use $SLURM_TMPDIR or regular /tmp
 if [ -z "$SLURM_TMPDIR" ]; then
