@@ -17,7 +17,7 @@ echo "Will use venv path: $VENV"
 # Load slurm modules
 module load StdEnv/2020 gcc/9.3.0 cuda/11.0
 module load nodejs
-module load python/3.9 arrow
+module load python/3.8 arrow opencv
 
 # virtualenv setup
 virtualenv --no-download "$VENV"
