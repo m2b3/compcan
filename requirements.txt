@@ -75,7 +75,7 @@ lockfile==0.12.2+computecanada
 Markdown==3.4.3+computecanada
 markdown_it_py==2.2.0+computecanada
 MarkupSafe==2.1.2+computecanada
-matplotlib==3.5.1+computecanada
+matplotlib==3.7.0+computecanada
 matplotlib_inline==0.1.6+computecanada
 mdit_py_plugins==0.3.4+computecanada
 mdurl==0.1.2+computecanada
