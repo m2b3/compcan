@@ -95,10 +95,6 @@ notebook==6.4.8+computecanada
 notebook_shim==0.2.2+computecanada
 numpy==1.24.2+computecanada
 oauthlib==3.2.2+computecanada
-opencv_contrib_python==4.7.0
-opencv_contrib_python_headless==4.7.0
-opencv_python==4.7.0
-opencv_python_headless==4.7.0
 opt_einsum==3.3.0+computecanada
 packaging==21.3+computecanada
 pandas==1.4.0+computecanada
@@ -124,7 +120,6 @@ protobuf==3.19.4+computecanada
 psutil==5.9.4+computecanada
 ptyprocess==0.7.0+computecanada
 pure_eval==0.2.2+computecanada
-pyarrow==10.0.1
 pyasn1==0.5.0+computecanada
 pyasn1_modules==0.3.0+computecanada
 pycparser==2.21+computecanada
