@@ -72,7 +72,7 @@ JOB_ID=$(tail -f "$LOG" | grep "job allocation" -m 1 | sed -nr 's/^.*Pending job
 echo "Job ID will be $JOB_ID"
 
 # Get server info
-echo "Waiting for Jupyter..."
+echo "Waiting for environment setup and Jupyter..."
 
 url=$(tail -f "$LOG" \
   | grep -m1 -A1 --line-buffered "one of these" \
@@ -103,7 +103,6 @@ echo
 echo
 echo "Remote URL: $url"
 echo "Local URL: $local_url"
-firefox "$local_url"
 
 # use -N for no interactivity
 # -t: pty allocation
@@ -121,5 +120,9 @@ echo
 
 # Prevent sleep - that would kill the tunnel.
 systemd-inhibit \
-  ssh -t -L $LOCAL_PORT:$COMPUTE_HOST:$REMOTE_PORT $GATEWAY ssh $COMPUTE_HOST
+  ssh -t -L $LOCAL_PORT:$COMPUTE_HOST:$REMOTE_PORT $GATEWAY ssh $COMPUTE_HOST &
 
+sleep 3
+firefox "$local_url" &
+
+wait
