@@ -22,4 +22,4 @@ $GPUS_OPTION
 srun --account=$ACCT jupyterlab.sh" >$SBATCH_SCRIPT
 
 # Submit the job script to SLURM
-sbatch $SBATCH_SCRIPT
+sbatch --parsable $SBATCH_SCRIPT
