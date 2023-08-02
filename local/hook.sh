@@ -66,12 +66,13 @@ echo "Connecting through $GATEWAY to run:"
 echo "  $REMOTE_CMD"
 
 # Spawn the job non-interactively to prevent it from being killed on connection less.
-ssh "$GATEWAY" "$REMOTE_CMD" >"$LOG" 2>&1 &
-
-JOB_ID=$(tail -f "$LOG" | grep "job allocation" -m 1 | sed -nr 's/^.*Pending job allocation ([[:digit:]]+).*$/\1/p')
-[ -n "$JOB_ID" ]
-
+spawn_out=$(ssh "$GATEWAY" "$REMOTE_CMD")
+echo "Spawned job: $spawn_out"
+JOB_ID=$(tail -n 1 <<<"$spawn_out" | tr -d '\r')
 echo "Job ID will be $JOB_ID"
+
+# Stream output to local log file.
+ssh "$GATEWAY" "tail -f ~/compcan/logs/$JOB_ID.out" >"$LOG" 2>&1 &
 
 # Get server info
 echo "Waiting for environment setup and Jupyter..."
