@@ -72,7 +72,7 @@ JOB_ID=$(tail -n 1 <<<"$spawn_out" | tr -d '\r')
 echo "Job ID will be $JOB_ID"
 
 # Stream output to local log file.
-ssh "$GATEWAY" "tail -f ~/compcan/logs/$JOB_ID.out" >"$LOG" 2>&1 &
+ssh "$GATEWAY" "tail -F ~/compcan/logs/$JOB_ID.out" >"$LOG" 2>&1 &
 
 # Get server info
 echo "Waiting for environment setup and Jupyter..."
