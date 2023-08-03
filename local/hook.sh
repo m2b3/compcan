@@ -2,11 +2,12 @@
 set -e
 # Local log file to track hostname / port / ...
 LOG=$(mktemp -d)/remote.out
-CLUSTER=$1
-CORES=$2
-MEMORY=$3
-MAX_TIME=$4
-GPUS=$5
+CLUSTER="$1"
+ACCOUNT="$2"
+CORES="$3"
+MEMORY="$4"
+MAX_TIME="$5"
+GPUS="$6"
 
 GATEWAY=$CLUSTER.computecanada.ca
 
@@ -44,12 +45,10 @@ echo "Max job duration: ${MAX_TIME:-default}"
 echo "GPUs: ${GPUS:-}"
 echo
 
-export RI_ARGS="\"$CORES\" \"$MEMORY\" \"$MAX_TIME\" $GPUS"
+export RI_ARGS="\"$ACCOUNT\" \"$CORES\" \"$MEMORY\" \"$MAX_TIME\" $GPUS"
 
 # Erase old logs.
 rm -f "$LOG" && touch "$LOG"
-
-echo "Connecting through $GATEWAY"
 
 # Run Jupyter on compute node.
 REMOTE_CMD="
@@ -72,6 +71,7 @@ JOB_ID=$(tail -n 1 <<<"$spawn_out" | tr -d '\r')
 echo "Job ID will be $JOB_ID"
 
 # Stream output to local log file.
+# -F to retry if file doesn't exist
 ssh "$GATEWAY" "tail -F ~/compcan/logs/$JOB_ID.out" >"$LOG" 2>&1 &
 
 # Get server info
@@ -125,6 +125,6 @@ systemd-inhibit \
   ssh -t -L $LOCAL_PORT:$COMPUTE_HOST:$REMOTE_PORT $GATEWAY ssh $COMPUTE_HOST &
 
 sleep 3
-firefox "$local_url" &
+#firefox "$local_url" &
 
 wait
