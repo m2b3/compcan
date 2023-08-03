@@ -18,7 +18,7 @@ echo "#!/bin/bash
 #SBATCH --time=${4:-"1:0:0"}
 #SBATCH --account=$ACCT
 #SBATCH -o ../logs/%j.out
-$GPUS_OPTION
+#SBATCH $GPUS_OPTION
 
 srun --account=$ACCT jupyterlab.sh" >$SBATCH_SCRIPT
 
