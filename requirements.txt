@@ -176,6 +176,3 @@ Werkzeug==2.2.3+computecanada
 widgetsnbextension==3.5.2+computecanada
 wrapt==1.15.0+computecanada
 zipp==3.7.0+computecanada
-
-
-dlib
