@@ -1,4 +1,6 @@
 absl_py==1.4.0+computecanada
+aiohttp==3.8.4+computecanada
+aiosignal==1.3.1+computecanada
 anyio==3.6.2+computecanada
 arff==0.9+computecanada
 argon2_cffi==21.3.0+computecanada
@@ -6,6 +8,7 @@ argon2_cffi_bindings==21.2.0+computecanada
 asttokens==2.2.1+computecanada
 astunparse==1.6.3+computecanada
 async_generator==1.10+computecanada
+async_timeout==4.0.2+computecanada
 attrs==21.4.0+computecanada
 Babel==2.10.3+computecanada
 backcall==0.2.0+computecanada
@@ -25,19 +28,23 @@ contourpy==1.0.7+computecanada
 cryptography==36.0.1+computecanada
 cycler==0.11.0+computecanada
 Cython==0.29.27+computecanada
+datasets==2.14.3
 deap==1.0.1+computecanada
 debugpy==1.6.6+computecanada
 decorator==5.1.1+computecanada
 defusedxml==0.7.1+computecanada
-dill==0.3.6+computecanada
+dill==0.3.7
 dnspython==2.2.0+computecanada
 ecdsa==0.17.0+computecanada
 entrypoints==0.4+computecanada
 etils==1.1.1+computecanada
 executing==1.2.0+computecanada
 fastjsonschema==2.16.3+computecanada
+filelock==3.12.2
 flatbuffers==20190709135844+computecanada
 fonttools==4.29.1+computecanada
+frozenlist==1.3.3+computecanada
+fsspec==2023.6.0+computecanada
 funcsigs==1.0.2+computecanada
 gast==0.4.0+computecanada
 google-pasta==0.2.0+computecanada
@@ -46,6 +53,7 @@ google_auth_oauthlib==0.4.6+computecanada
 googleapis-common-protos==1.53.0+computecanada
 grpcio==1.51.3+computecanada
 h5py==3.8.0+computecanada
+huggingface_hub==0.16.4+computecanada
 idna==3.3+computecanada
 importlib_metadata==4.10.1+computecanada
 importlib_resources==5.4.0+computecanada
@@ -83,6 +91,8 @@ mediapipe==0.9.0+computecanada
 mistune==2.0.5+computecanada
 mock==4.0.3+computecanada
 mpmath==1.2.1+computecanada
+multidict==6.0.4+computecanada
+multiprocess==0.70.15
 nbclassic==0.5.2+computecanada
 nbclient==0.5.10+computecanada
 nbconvert==7.2.9+computecanada
@@ -95,6 +105,10 @@ notebook==6.4.8+computecanada
 notebook_shim==0.2.2+computecanada
 numpy==1.24.2+computecanada
 oauthlib==3.2.2+computecanada
+opencv_contrib_python==4.8.0
+opencv_contrib_python_headless==4.8.0
+opencv_python==4.8.0
+opencv_python_headless==4.8.0
 opt_einsum==3.3.0+computecanada
 packaging==21.3+computecanada
 pandas==1.4.0+computecanada
@@ -120,6 +134,7 @@ protobuf==3.19.4+computecanada
 psutil==5.9.4+computecanada
 ptyprocess==0.7.0+computecanada
 pure_eval==0.2.2+computecanada
+pyarrow==8.0.0
 pyasn1==0.5.0+computecanada
 pyasn1_modules==0.3.0+computecanada
 pycparser==2.21+computecanada
@@ -132,11 +147,13 @@ python_json_logger==2.0.7+computecanada
 pytz==2021.3+computecanada
 PyYAML==6.0+computecanada
 pyzmq==25.0.0+computecanada
+regex==2022.10.31+computecanada
 requests==2.27.1+computecanada
 requests_oauthlib==1.3.1+computecanada
 rfc3339_validator==0.1.4+computecanada
 rfc3986_validator==0.1.1+computecanada
 rsa==4.9+computecanada
+safetensors==0.3.1+computecanada
 scikit_learn==1.2.1+computecanada
 scipy==1.8.0+computecanada
 seaborn==0.12.2+computecanada
@@ -162,10 +179,12 @@ terminado==0.13.1+computecanada
 testpath==0.5.0+computecanada
 threadpoolctl==3.1.0+computecanada
 tinycss2==1.2.1+computecanada
+tokenizers==0.13.2+computecanada
 toml==0.10.2+computecanada
 tornado==6.2+computecanada
 tqdm==4.65.0+computecanada
 traitlets==5.9.0+computecanada
+transformers @ git+https://github.com/huggingface/transformers.git@a6e6b1c622d8d08e2510a82cb6266d7b654f1cbf
 typing_extensions==4.0.1+computecanada
 ujson==5.7.0+computecanada
 urllib3==1.26.8+computecanada
@@ -175,4 +194,6 @@ websocket_client==1.5.1+computecanada
 Werkzeug==2.2.3+computecanada
 widgetsnbextension==3.5.2+computecanada
 wrapt==1.15.0+computecanada
+xxhash==3.2.0+computecanada
+yarl==1.8.2+computecanada
 zipp==3.7.0+computecanada
