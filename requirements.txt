@@ -30,12 +30,12 @@ contourpy==1.0.7+computecanada
 cryptography==36.0.1+computecanada
 cycler==0.11.0+computecanada
 Cython==0.29.27+computecanada
-datasets==2.14.3
+datasets==2.13.0+computecanada
 deap==1.0.1+computecanada
 debugpy==1.6.6+computecanada
 decorator==5.1.1+computecanada
 defusedxml==0.7.1+computecanada
-dill==0.3.7
+dill==0.3.6+computecanada
 dnspython==2.2.0+computecanada
 dulwich==0.21.3+computecanada
 ecdsa==0.17.0+computecanada
@@ -44,7 +44,7 @@ etils==1.1.1+computecanada
 everett==2.0.1+computecanada
 executing==1.2.0+computecanada
 fastjsonschema==2.16.3+computecanada
-filelock==3.12.2
+filelock==3.12.0+computecanada
 flatbuffers==20190709135844+computecanada
 fonttools==4.29.1+computecanada
 frozenlist==1.3.3+computecanada
@@ -97,7 +97,7 @@ mistune==2.0.5+computecanada
 mock==4.0.3+computecanada
 mpmath==1.2.1+computecanada
 multidict==6.0.4+computecanada
-multiprocess==0.70.15
+multiprocess==0.70.14+computecanada
 nbclassic==0.5.2+computecanada
 nbclient==0.5.10+computecanada
 nbconvert==7.2.9+computecanada
@@ -199,7 +199,7 @@ torchvision==0.14.1+computecanada
 tornado==6.2+computecanada
 tqdm==4.65.0+computecanada
 traitlets==5.9.0+computecanada
-transformers @ git+https://github.com/huggingface/transformers.git@a6e6b1c622d8d08e2510a82cb6266d7b654f1cbf
+-e git://github.com/huggingface/transformers.git#egg=transformers
 typing_extensions==4.0.1+computecanada
 ujson==5.7.0+computecanada
 urllib3==1.26.15+computecanada
