@@ -199,7 +199,6 @@ torchvision==0.14.1+computecanada
 tornado==6.2+computecanada
 tqdm==4.65.0+computecanada
 traitlets==5.9.0+computecanada
--e git://github.com/huggingface/transformers.git#egg=transformers
 typing_extensions==4.0.1+computecanada
 ujson==5.7.0+computecanada
 urllib3==1.26.15+computecanada
