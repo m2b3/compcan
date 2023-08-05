@@ -122,7 +122,7 @@ echo
 
 # Prevent sleep - that would kill the tunnel.
 systemd-inhibit \
-  ssh -t -L $LOCAL_PORT:$COMPUTE_HOST:$REMOTE_PORT $GATEWAY ssh $COMPUTE_HOST &
+  ssh -L $LOCAL_PORT:$COMPUTE_HOST:$REMOTE_PORT $GATEWAY ssh $COMPUTE_HOST
 
 sleep 3
 #firefox "$local_url" &
