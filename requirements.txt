@@ -161,6 +161,7 @@ requests-toolbelt==0.9.1+computecanada
 requests_oauthlib==1.3.1+computecanada
 rfc3339_validator==0.1.4+computecanada
 rfc3986_validator==0.1.1+computecanada
+rich==13.5.2
 rsa==4.9+computecanada
 safetensors==0.3.1+computecanada
 scikit_learn==1.2.1+computecanada
