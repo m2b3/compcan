@@ -3,7 +3,7 @@
 Usage:
 
 ```bash
- ./hook.sh rrg-mypi narval 16 8000M 2:00:00 1
+ ./hook.sh narval rrg-mypi 16 8000M 2:00:00 1
 ```
 
 Will spawn a job on `narval` under the account `rrg-mypi` with 16 CPUs, 8GB RAM, 1 GPU, for a maximum duration of 2 hours.
