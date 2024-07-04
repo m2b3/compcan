@@ -3,10 +3,10 @@ set -ve
 
 source load_environment
 
-# Jupyter startup
-unset XDG_RUNTIME_DIR
-
 # RUNTIME_ROOT is set by load_environment
+export XDG_CONFIG_HOME="$RUNTIME_ROOT"/xdg_config
+export XDG_RUNTIME_DIR="$RUNTIME_ROOT"/xdg_run
+export XDG_CACHE_HOME="$RUNTIME_ROOT"/xdg_cache
 export JUPYTER_RUNTIME_DIR="$RUNTIME_ROOT"/jupyter-runtime
 export JUPYTER_DATA_DIR="$RUNTIME_ROOT"/jupyter-data
 export JUPYTER_CONFIG_PATH="$RUNTIME_ROOT"/jupyter-config
