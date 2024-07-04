@@ -10,6 +10,7 @@ unset XDG_RUNTIME_DIR
 export JUPYTER_RUNTIME_DIR="$RUNTIME_ROOT"/jupyter-runtime
 export JUPYTER_DATA_DIR="$RUNTIME_ROOT"/jupyter-data
 export JUPYTER_CONFIG_PATH="$RUNTIME_ROOT"/jupyter-config
+export IPYTHONDIR="$RUNTIME_ROOT"/ipythondir
 mkdir -p "$JUPYTER_RUNTIME_DIR" "$JUPYTER_DATA_DIR" "$JUPYTER_CONFIG_PATH"
 
 cd
