@@ -1,7 +1,10 @@
 # This file ought to be sourced.
 #
 # Depends on:
-REQS_FILE=~/compcan/requirements.txt
+
+PROJ_ROOT=$HOME/compcan
+REQS_FILE=$PROJ_ROOT/requirements.txt
+EXTRA_REQS_FILE=$PROJ_ROOT/requirements_extra.txt
 
 # Use $SLURM_TMPDIR or regular /tmp
 if [ -z "$SLURM_TMPDIR" ]; then
@@ -36,3 +39,12 @@ pip install --no-index --upgrade pip
 time cat "$REQS_FILE" \
 	| xargs --max-args=1 --max-procs=$(nproc) \
 		pip install --no-index --no-deps
+
+# This one is a special case. Building it from source fails
+# because it tries to connect to the internet without going through the proxy.
+# Not working for now.
+#pip install maturin
+
+# Extra dependencies, which may require internet connectivity
+# We have httpproxy loaded so it is fine
+pip install -r "$EXTRA_REQS_FILE"
