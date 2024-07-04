@@ -21,6 +21,12 @@ module load python/3.8 arrow/8 opencv
 module load httpproxy
 module load rust
 
+
+# Proxy environment
+export CARGO_HTTP_PROXY="$https_proxy"
+export HTTPS_PROXY="$https_proxy"
+git config --global http.proxy "$http_proxy"
+
 # virtualenv setup
 virtualenv --no-download "$VENV"
 source "$VENV/bin/activate"
