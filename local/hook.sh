@@ -9,7 +9,7 @@ MEMORY="$4"
 MAX_TIME="$5"
 GPUS="$6"
 
-GATEWAY=$CLUSTER.computecanada.ca
+GATEWAY="$CLUSTER"1.computecanada.ca
 
 find_free_port() {
   # define a range of potentially free ports
