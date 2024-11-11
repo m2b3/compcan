@@ -82,7 +82,7 @@ url=$(tail -f "$LOG" |
   tail -n 1 |
   tr -d " ")
 
-notify-send "Job $JOB_ID's Jupyter is ready" || true
+#notify-send "Job $JOB_ID's Jupyter is ready" || true
 
 echo
 pair=$(sed -rn 's/^.*http:\/\/(.*):([[:digit:]]+).*/\1 \2/p' <<<"$url")

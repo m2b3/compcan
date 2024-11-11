@@ -1,1 +1,6 @@
 # TODO
+ipykernel
+ipympl
+ipython
+jupyterlab
+jupytext
