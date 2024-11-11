@@ -55,7 +55,7 @@ REMOTE_CMD="
 cd ~
 if cd compcan; then
   git fetch --all;
-  git reset --hard origin/main;
+  git reset --hard origin/suresh;
 else
   git clone https://github.com/m2b3/compcan.git;
 fi
